@@ -5,3 +5,4 @@ demos/
 extras/documentation
 .project
 .DS_Store
+.buildpath
