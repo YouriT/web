@@ -1,21 +1,26 @@
 <?php
-use Zend\ServiceManager\ServiceManager,
-    Zend\Mvc\Service\ServiceManagerConfiguration;
 
-chdir(dirname(__DIR__));
+// Define path to application directory
+defined('APPLICATION_PATH')
+    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
 
-// Composer autoloading
-if (!include_once('vendor/autoload.php')) {
-    throw new RuntimeException('vendor/autoload.php could not be found. Did you run `php composer.phar install`?');
-}
+// Define application environment
+defined('APPLICATION_ENV')
+    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 
-// Get application stack configuration
-$configuration = include 'config/application.config.php';
+// Ensure library/ is on include_path
+set_include_path(implode(PATH_SEPARATOR, array(
+    realpath(APPLICATION_PATH . '/../library'),
+    get_include_path(),
+)));
 
-// Setup service manager
-$serviceManager = new ServiceManager(new ServiceManagerConfiguration($configuration['service_manager']));
-$serviceManager->setService('ApplicationConfiguration', $configuration);
-$serviceManager->get('ModuleManager')->loadModules();
+/** Zend_Application */
+require_once 'Zend/Application.php';
 
-// Run application
-$serviceManager->get('Application')->bootstrap()->run()->send();
+// Create application, bootstrap, and run
+$application = new Zend_Application(
+    APPLICATION_ENV,
+    APPLICATION_PATH . '/configs/application.ini'
+);
+$application->bootstrap()
+            ->run();
