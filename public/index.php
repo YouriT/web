@@ -1,26 +1,21 @@
 <?php
+chdir(dirname(__DIR__));
+require_once (getenv('ZF2_PATH') ?: 'vendor/ZendFramework/library') . '/Zend/Loader/AutoloaderFactory.php';
 
-// Define path to application directory
-defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
+use Zend\Loader\AutoloaderFactory,
+Zend\ServiceManager\ServiceManager,
+Zend\Mvc\Service\ServiceManagerConfiguration;
 
-// Define application environment
-defined('APPLICATION_ENV')
-    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+// setup autoloader
+AutoloaderFactory::factory();
 
-// Ensure library/ is on include_path
-set_include_path(implode(PATH_SEPARATOR, array(
-    realpath(APPLICATION_PATH . '/../library'),
-    get_include_path(),
-)));
+// get application stack configuration
+$configuration = include 'config/application.config.php';
 
-/** Zend_Application */
-require_once 'Zend/Application.php';
+// setup service manager
+$serviceManager = new ServiceManager(new ServiceManagerConfiguration($configuration['service_manager']));
+$serviceManager->setService('ApplicationConfiguration', $configuration);
+$serviceManager->get('ModuleManager')->loadModules();
 
-// Create application, bootstrap, and run
-$application = new Zend_Application(
-    APPLICATION_ENV,
-    APPLICATION_PATH . '/configs/application.ini'
-);
-$application->bootstrap()
-            ->run();
+// run application
+$serviceManager->get('Application')->bootstrap()->run()->send();
