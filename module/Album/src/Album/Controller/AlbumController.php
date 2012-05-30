@@ -2,6 +2,8 @@
 
 namespace Album\Controller;
 
+use Doctrine\ORM\EntityManager;
+
 use Zend\Mvc\Controller\ActionController,
     Zend\View\Model\ViewModel,
     Album\Model\AlbumTable,
@@ -14,6 +16,13 @@ class AlbumController extends ActionController
      * @var \Album\Model\AlbumTable
      */
     protected $albumTable;
+    
+    protected $_em;
+    
+    public function setEntityManager(EntityManager $em)
+    {
+    	$this->_em = $em;
+    }
 
     public function indexAction()
     {

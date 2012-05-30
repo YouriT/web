@@ -21,7 +21,7 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'album/album',
+                        'controller' => 'album',
                         'action'     => 'index',
                     ),
                 ),

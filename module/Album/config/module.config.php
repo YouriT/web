@@ -1,11 +1,34 @@
 <?php
+namespace Album;
 
 return array(
-
+// 	'di' => array(
+// 		'instance' => array(
+// 			'Album\Controller\AlbumController' => array(
+// 				'parameters' => array(
+// 					// 'albumTable' => 'Album\Model\AlbumTable',
+// 					'em' => 'doctrine_em',
+// 				),
+// 			),
+// 			'orm_driver_chain' => array(
+// 				'parameters' => array(
+// 					'drivers' => array(
+// 						'Album' => array(
+// 							'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+// 							'namespace' => __NAMESPACE__ . '\Entity',
+// 							'paths' => array(
+// 								__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity'
+// 							),
+// 						),
+// 					),
+// 				),
+// 			),
+// 		),
+// 	),
     // Controllers in this module
     'controller' => array(
         'classes' => array(
-            'album/album' => 'Album\Controller\AlbumController'
+            'album' => 'Album\Controller\AlbumController'
         ),
     ),
 
@@ -21,7 +44,7 @@ return array(
                         'id'     => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'album/album',
+                        'controller' => 'album',
                         'action'     => 'index',
                     ),
                 ),

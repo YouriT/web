@@ -9,7 +9,9 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "dev-master#cef2f9c90a9dc3fe3018b624ff9113666a397b73"
+        "zendframework/zendframework": "dev-master",
+	"doctrine/DoctrineModule": "dev-master",
+	"doctrine/DoctrineORMModule": "dev-master"
     },
     "autoload": {
         "psr-0": {
