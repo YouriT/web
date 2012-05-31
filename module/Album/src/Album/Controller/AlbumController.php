@@ -17,17 +17,21 @@ class AlbumController extends ActionController
      */
     protected $albumTable;
     
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
     protected $_em;
     
-    public function setEntityManager(EntityManager $em)
-    {
-    	$this->_em = $em;
-    }
+// 	public function __construct(EntityManager $em) {
+//         $this->_em = $em;
+//         // now you can use the EntityManager!
+//     }
 
     public function indexAction()
     {
         return new ViewModel(array(
-            'albums' => $this->getAlbumTable()->fetchAll(),
+        	'albums' => array()
+//             'albums' => $this->_em->getRepository('Album\Entity\Album')->findAll(),
         ));
     }
 

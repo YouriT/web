@@ -62,21 +62,21 @@
         {
             "package": "zendframework/zendframework",
             "version": "dev-master",
+            "source-reference": "53c6ef5cce6e07ff777565f19e0f066b71706994",
+            "alias-pretty-version": "2.0.x-dev",
+            "alias-version": "2.0.9999999.9999999-dev"
+        },
+        {
+            "package": "zendframework/zendframework",
+            "version": "dev-master",
+            "source-reference": "53c6ef5cce6e07ff777565f19e0f066b71706994"
+        },
+        {
+            "package": "zendframework/zendframework",
+            "version": "dev-master",
             "source-reference": "7a73ff0e1ef6e3acfe6a782c33fff6faf518bbf5",
             "alias-pretty-version": "2.0.x-dev",
             "alias-version": "2.0.9999999.9999999-dev"
-        },
-        {
-            "package": "zendframework/zendframework",
-            "version": "dev-master",
-            "source-reference": "9907c8e8f4df2e2495936edb8344e0bab2fa8cbe",
-            "alias-pretty-version": "2.0.x-dev",
-            "alias-version": "2.0.9999999.9999999-dev"
-        },
-        {
-            "package": "zendframework/zendframework",
-            "version": "dev-master",
-            "source-reference": "7a73ff0e1ef6e3acfe6a782c33fff6faf518bbf5"
         }
     ],
     "packages-dev": null,

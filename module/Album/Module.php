@@ -35,6 +35,9 @@ class Module
                     $table = new AlbumTable($dbAdapter);
                     return $table;
                 },
+//                 'em' => function($sm) {
+//                 	return 
+//                 },
             ),
         );
     }

@@ -12,7 +12,7 @@ $settings = array(
     'use_annotations' => true,
 
     // enables production mode by disabling generation of proxies
-   'production' => false,
+   	'production' => false,
 
     // sets the cache to use for metadata: one of 'array', 'apc', or 'memcache'
     'cache' => 'array',
